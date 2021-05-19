@@ -1,7 +1,7 @@
 function(CPP_TARGET_LISTING TARGET)
   get_target_property(TARGET_SUFFIX ${TARGET} SUFFIX)
   add_custom_command(TARGET ${TARGET} POST_BUILD COMMAND
-    ${OBJDUMP} -h -D ${TARGET}${TARGET_SUFFIX} > ${TARGET}.lst
+    objdump -h -D ${TARGET} > ${TARGET}.lst
   )
 endfunction()
 
@@ -9,7 +9,7 @@ endfunction()
 function(CPP_TARGET_SIZE TARGET)
   get_target_property(TARGET_SUFFIX ${TARGET} SUFFIX)
   add_custom_command(TARGET ${TARGET} POST_BUILD COMMAND
-    ${SIZE} ${TARGET}${TARGET_SUFFIX}
+    size ${TARGET}
   )
 endfunction()
 
